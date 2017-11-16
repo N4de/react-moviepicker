@@ -10,12 +10,13 @@ class SearchBar extends Component {
   render() {
     return(
       <div>
-        <div className="search-bar" label="Search for Movies by Year">
+        <div className="search-bar" label="Search for Movies">
           <input />
         </div>
       </div>
     );
   }
+
 }
 
 export default SearchBar;
