@@ -10,13 +10,16 @@ class SearchBar extends Component {
   render() {
     return(
       <div>
-        <div className="search-bar" label="Search for Movies">
+        <div className="search-bar">
           <input />
         </div>
       </div>
     );
   }
 
+  onInputChange(term) {
+    this.setState({term});
+  }
 }
 
 export default SearchBar;

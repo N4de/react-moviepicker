@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      movies: ['tätä ei pidä olla olemassa']
+      movies: []
     };
 
   }
@@ -40,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <SearchBar onInputChange={this.discoverMovies} />
         <MovieList movies={this.state.movies}/>
       </div>
     );
