@@ -7,11 +7,15 @@ class SearchBar extends Component {
 		this.state = { term: '' };
 	}
 
+  handleBlur() {
+    console.log(this.state.term);
+  }
+
   render() {
     return(
       <div>
         <div className="search-bar">
-          <input />
+          <input onChange={e => this.onInputChange(e.target.value)} onBlur={() => this.handleBlur()} onKeyUp={() => this.handleKeyPress()} />
         </div>
       </div>
     );
@@ -19,6 +23,12 @@ class SearchBar extends Component {
 
   onInputChange(term) {
     this.setState({term});
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      
+    }
   }
 }
 

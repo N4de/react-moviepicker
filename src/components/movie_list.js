@@ -2,10 +2,10 @@ import React from 'react';
 import MovieListItem from './movie_list_item';
 
 const MovieList = (props) => {
+	console.log(props.movies);
   const movieItems = props.movies.map((movie) => {
-    console.log(movie);
 		return <MovieListItem
-      key={movie.id}
+     		key={movie.id}
 			movie={movie} />;
 	});
 

@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/search_bar';
 import axios from 'axios';
 import MovieList from './components/movie_list';
+import { searchMovies } from './movie_service';
 
 const API_KEY = '7d4a9a79104d85fe4518aee4ee95fd56';
 const ROOT_URL ='https://api.themoviedb.org';
@@ -18,7 +19,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.discoverMovies();
+    //this.discoverMovies();
+    this.searchMovies('spiderman');
   }
 
 
@@ -29,8 +31,19 @@ class App extends Component {
         this.setState ({
           movies: response.data.results
         });
-        console.log(response.data.results);
-        console.log(this.state.movies);
+      })
+      .catch(error => {
+      console.log('Error fetching and parsing data', error);
+    });
+  }
+
+  searchMovies(searchTerm) {
+
+    searchMovies(searchTerm)
+      .then(response => {
+        this.setState ({
+          movies: response.data.results
+        });
       })
       .catch(error => {
       console.log('Error fetching and parsing data', error);
@@ -40,6 +53,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>Moviepicker v0.1</h1>
         <SearchBar onInputChange={this.discoverMovies} />
         <MovieList movies={this.state.movies}/>
       </div>
